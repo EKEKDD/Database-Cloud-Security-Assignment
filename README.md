@@ -6,11 +6,12 @@ Open your terminal/command prompt and run:
 pip install flask flask-sqlalchemy pyodbc
 
 Install these with browser:
-SSMS 2022
-MSSQL 2022 Developer Edition
+SSMS 2022\
+MSSQL 2022 Developer Edition\
 ODBC Driver 18
 
 Forgot to mention, remember to switch to Mix Authentication Mode and restart the service, else the setup query will return error
 
 No Raw SQL: Do not write raw SQL queries (e.g., SELECT * FROM...) in the Python code. Use SQLAlchemy syntax (User.query.all()). This protects against SQL Injection 
+
 
