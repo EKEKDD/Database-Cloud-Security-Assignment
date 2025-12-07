@@ -41,7 +41,7 @@ VALUES ('admin', 'scrypt:32768:8:1$neW3YKS6jXk3GLS6$94aa81a16cb4bc338981e55c0acf
 
 -- Sam here is web Sam, different from SQL Sam. This Sam can login to web app, but will see Access Denied.
 -- So if someone stole or hacked web sam's account, no harm will be done
-VALUES ('sam', 'scrypt:32768:8:1$Bez8FzrN6pbBDqgy$c76435ad7cc221e918465caf56b967836fe0b4101b32dda5f65105c0e6a98ba1d0fff597a7857e63fc41400a2c280c1a3a839bfdadb8349a7b245b5959f39fff', 'User');
+('sam', 'scrypt:32768:8:1$Bez8FzrN6pbBDqgy$c76435ad7cc221e918465caf56b967836fe0b4101b32dda5f65105c0e6a98ba1d0fff597a7857e63fc41400a2c280c1a3a839bfdadb8349a7b245b5959f39fff', 'User');
 
 
 INSERT INTO Employees (FullName, ICNumber, Salary, Position)
@@ -52,3 +52,4 @@ VALUES
 
 
 GO
+
