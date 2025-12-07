@@ -32,3 +32,13 @@ WITH PRIVATE KEY (
     ENCRYPTION BY PASSWORD = 'backuppassword'
 );
 GO
+
+-- Verify the Encryption
+SELECT
+	db.name,
+	db.is_encrypted,
+	dm.encryption_state,
+	dm.percent_complete
+FROM sys.databases db
+LEFT JOIN sys.dm_database_encryption_keys dm
+ON db.database_id = dm.database_id
