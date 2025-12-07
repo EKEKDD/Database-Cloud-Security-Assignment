@@ -12,7 +12,21 @@ GO
 GRANT SELECT ON Employees TO Sam;
 DENY SELECT ON Users TO Sam;
 
+-- Create SQL John the Manager
+CREATE LOGIN SQLJohn WITH PASSWORD = 'managerpassword';
+GO
+
+USE SecureEmployeeDB;
+GO
+
+CREATE USER John FOR LOGIN SQLJohn;
+GO
+
+GRANT SELECT ON Employees TO John;
+GRANT SELECT ON Users TO John;
+
 GRANT UNMASK TO Sam;
+GRANT UNMASK TO John;
 GO
 
 CREATE SCHEMA Security;
@@ -29,6 +43,8 @@ AS
         DATABASE_PRINCIPAL_ID() = DATABASE_PRINCIPAL_ID('AppWorker')
         OR 
         DATABASE_PRINCIPAL_ID() = DATABASE_PRINCIPAL_ID('dbo')
+        OR 
+        DATABASE_PRINCIPAL_ID() = DATABASE_PRINCIPAL_ID('John')
         OR 
         @FullName = USER_NAME();
 GO
