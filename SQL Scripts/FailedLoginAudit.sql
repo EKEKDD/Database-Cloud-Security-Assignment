@@ -37,5 +37,6 @@ GO
 SELECT event_time, action_id, server_principal_name, database_name, statement
 FROM sys.fn_get_audit_file('C:\Temp\SecurityAuditFile*', DEFAULT, DEFAULT)
 WHERE action_id = 'LGIF' -- Login Failed
-   OR action_id IN ('SL', 'IN', 'UP', 'DL') -- Select, Insert, Update, Delete
+   OR action_id IN ('SL', 'IN', 'UP', 'DL','AUSC') -- Select, Insert, Update, Delete and Login
 ORDER BY event_time DESC;
+
