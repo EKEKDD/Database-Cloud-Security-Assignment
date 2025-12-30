@@ -17,6 +17,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Session cookie hardening
+debug_flag = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+app.config['SESSION_COOKIE_SECURE'] = not debug_flag
+
 db = SQLAlchemy(app)  # Initialize the ORM
 
 # Database models
@@ -118,4 +124,5 @@ if __name__ == '__main__':
             db.create_all()
     debug_mode = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
     app.run(debug=debug_mode)
+
 
