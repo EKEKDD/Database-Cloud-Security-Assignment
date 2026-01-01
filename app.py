@@ -7,12 +7,7 @@ import os
 app = Flask(__name__)
 # Secret key for signing session cookies
 app.secret_key = os.environ.get('SECRET_KEY', 'super_secret_key')
-
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'DATABASE_URL',
-    'mssql+pyodbc://AppWorker:veryverystrongpassword@localhost/SecureEmployeeDB'
-    '?driver=ODBC+Driver+18+for+SQL+Server&TrustServerCertificate=yes'
-)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 # The DATABASE_URL default is pointing to a local MSSQL instance
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -124,5 +119,6 @@ if __name__ == '__main__':
             db.create_all()
     debug_mode = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
     app.run(debug=debug_mode)
+
 
 
