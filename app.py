@@ -2,7 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 app = Flask(__name__)
 # Secret key for signing session cookies
@@ -119,6 +121,7 @@ if __name__ == '__main__':
             db.create_all()
     debug_mode = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
     app.run(debug=debug_mode)
+
 
 
 
