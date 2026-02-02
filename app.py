@@ -117,10 +117,15 @@ def logout():
 
 if __name__ == '__main__':
     with app.app_context():
+        # Creates the local SQLite/DB file if it doesn't exist
         if os.environ.get('SKIP_DB_CREATE') != '1':
             db.create_all()
+            
+    # Combine the configuration into a SINGLE run command
     debug_mode = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
-    app.run(debug=debug_mode)
+    
+    app.run(host='0.0.0.0', port=80, debug=debug_mode))
+
 
 
 
